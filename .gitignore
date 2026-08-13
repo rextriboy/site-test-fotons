@@ -8,8 +8,10 @@ assets/
 
 # Secrets & local config
 opencode.json
+.opencode/
 
 # Unused / duplicate local media
 Engineers_discussing_solar_panel._*.mp4
+Engineers_discussing_solar_panel…*.mp4
 USINA FOTO.jpg
 c2852fc68252ade71e481c09f98e86cd.jpg
