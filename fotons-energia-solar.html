@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fótons Energia Solar | Engenharia Elétrica e Energia Solar</title>
+<meta name="description" content="Projetos solares e elétricos desenvolvidos por engenharia especializada no Vale do Paraíba.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--az:#00A8CC;--az-dk:#008DAD;--az-ht:#33C4E0;--la:#FF6B2C;--la-dk:#E5531B;--la-tx:#C2410C;--bw:#FFFFFF;--of:#F4F6FA;--pr:#101828;--tx:#3F4A5A;--muted:#55607A;--bd:#E2E8F2;--az-sec:#0A1628;--fd:'Sora',sans-serif;--fb:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--pr);background:var(--bw);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--pr)}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+h3{font-size:clamp(1.3rem,3vw,1.8rem)}
+p{max-width:65ch}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.ctn{max-width:1280px;margin:0 auto;padding:0 24px}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+
+/* Scroll progress */
+.pg{position:fixed;top:0;left:0;right:0;height:3px;z-index:1100;pointer-events:none}
+.pg i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--az),var(--az-ht));box-shadow:0 0 8px rgba(0,168,204,.5)}
+
+/* Mobile conversion bar */
+.mb-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:1000;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:1px solid var(--bd);box-shadow:0 -10px 30px rgba(10,22,40,.1)}
+.mb-bar .btn{width:100%;min-height:48px}
+
+/* WhatsApp widget */
+.wa-wrap{position:fixed;right:22px;bottom:22px;z-index:1200;display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.wa-card{width:304px;max-width:calc(100vw - 32px);background:#fff;border:1px solid var(--bd);border-radius:16px;box-shadow:0 18px 50px rgba(10,22,40,.24);overflow:hidden;transform:translateY(14px) scale(.96);opacity:0;visibility:hidden;transition:all .28s ease;pointer-events:none}
+.wa-card.ac{transform:translateY(0) scale(1);opacity:1;visibility:visible;pointer-events:auto}
+.wa-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#075E54;color:#fff}
+.wa-av{width:42px;height:42px;border-radius:50%;background:#128C7E;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.wa-av svg{width:24px;height:24px;fill:#fff}
+.wa-hd-tx{flex:1;min-width:0}
+.wa-hd-tx b{display:block;font-family:var(--fd);font-size:.9rem;letter-spacing:-.01em}
+.wa-hd-tx span{display:block;font-size:.72rem;opacity:.85;margin-top:1px}
+.wa-hd .wa-dot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 0 3px rgba(37,211,102,.3);flex:0 0 auto}
+.wa-close{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.wa-close:hover{background:rgba(255,255,255,.28)}
+.wa-close svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4}
+.wa-bd{padding:16px}
+.wa-bd p{font-size:.85rem;color:var(--tx);line-height:1.55;margin-bottom:14px}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:46px;background:#25D366;color:#fff;font-family:var(--fb);font-size:.88rem;font-weight:600;border:none;border-radius:10px;cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.wa-btn:hover{background:#1EBE5D;transform:translateY(-1px)}
+.wa-btn:active{transform:scale(.97)}
+.wa-btn svg{width:19px;height:19px;fill:#fff;flex:0 0 auto}
+.wa-fab{position:relative;width:60px;height:60px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 28px rgba(37,211,102,.42);transition:background .2s,transform .2s;flex:0 0 auto}
+.wa-fab:hover{background:#1EBE5D;transform:translateY(-3px) scale(1.04)}
+.wa-fab:active{transform:scale(.94)}
+.wa-fab svg{width:30px;height:30px;fill:#fff}
+.wa-fab::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waPulse 2.2s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.85);opacity:1}70%{transform:scale(1.28);opacity:0}100%{opacity:0}}
+.wa-fab:focus-visible,.wa-close:focus-visible,.wa-btn:focus-visible{outline:3px solid var(--az-ht);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.wa-fab::before{animation:none}.wa-card{transition:none}}
+
+@media(prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;transition:none}
+.pg i,.btn-p::after,.btn-a::after{display:none}
+*{scroll-behavior:auto!important}
+}
+
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);transition:all .3s}
+.hdr.sc{box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center}
+.logo-img{height:48px;width:auto;max-width:200px;object-fit:contain}
+.logo-ic{display:none}
+.logo-ic svg{width:20px;height:20px;color:var(--bw)}
+.nav-dk{display:none}
+.nav-ls{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-lk{font-size:.85rem;font-weight:500;color:var(--pr);transition:color .2s;position:relative}
+.nav-lk:hover{color:var(--az)}
+.nav-lk::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--az);transition:width .3s}
+.nav-lk:hover::after{width:100%}
+.hdr-cta{display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;font-family:var(--fb);font-size:.9rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:all .25s;letter-spacing:.01em;min-height:44px;position:relative;overflow:hidden}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn-p{background:var(--az);color:#fff;box-shadow:0 6px 20px rgba(0,168,204,.28)}.btn-p:hover{background:var(--az-dk);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,168,204,.36)}
+.btn-p::after{content:'';position:absolute;top:0;left:-160%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-20deg);transition:left .55s ease}
+.btn-p:hover::after{left:160%}
+.btn-a{background:var(--az);color:#fff;box-shadow:0 6px 20px rgba(0,168,204,.25)}.btn-a:hover{background:var(--az-dk);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,168,204,.34)}
+.btn-a::after{content:'';position:absolute;top:0;left:-160%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-20deg);transition:left .55s ease}
+.btn-a:hover::after{left:160%}
+.btn-w{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(4px)}.btn-w:hover{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.8);transform:translateY(-2px)}
+
+/* Hamburger */
+.hm-tg{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:10}
+.hm-tg span{width:22px;height:2px;background:var(--pr);transition:all .3s;border-radius:2px}
+.hm-tg.ac span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hm-tg.ac span:nth-child(2){opacity:0}
+.hm-tg.ac span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mb-mn{position:fixed;top:72px;left:0;right:0;background:#fff;padding:24px;transform:translateY(-110%);opacity:0;visibility:hidden;transition:all .3s;border-bottom:1px solid var(--bd);z-index:999}
+.mb-mn.ac{transform:translateY(0);opacity:1;visibility:visible}
+.mb-nl{list-style:none;display:flex;flex-direction:column;gap:0}
+.mb-nl a{display:block;padding:14px 0;font-weight:500;border-bottom:1px solid var(--bd)}
+.mb-ct{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+
+/* Hero */
+.hero{padding-top:140px;padding-bottom:100px;background:linear-gradient(135deg,var(--az-sec),#050D1F);position:relative;overflow:hidden;display:flex;align-items:center;min-height:100vh}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.85}
+.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(5,13,31,.95) 0%,rgba(5,13,31,.8) 40%,rgba(5,13,31,.32) 70%,rgba(5,13,31,.12) 88%,rgba(5,13,31,.45) 100%)}
+.hero-gr{position:absolute;inset:0;z-index:2;opacity:.05;background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);background-size:44px 44px}
+.hero-in{position:relative;z-index:3;width:100%;display:grid;grid-template-columns:1fr;gap:0;padding:0 24px 0 56px}
+.hero-ct{max-width:700px;padding-right:0}
+.hero-tag{display:none}
+.hero-bd{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(255,255,255,.08);border-radius:100px;font-size:.7rem;font-weight:500;color:rgba(255,255,255,.9);margin-bottom:18px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px)}
+.hero-bd-dot{width:5px;height:5px;background:var(--la);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,44,.55)}50%{box-shadow:0 0 0 5px rgba(255,107,44,0)}}
+.hero-tt{margin-bottom:18px;color:#fff;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.2;letter-spacing:-0.02em}
+.hero-tt-ac{color:var(--la);text-shadow:0 0 20px rgba(255,107,44,.3)}
+.hero-tx{font-size:.85rem;line-height:1.6;color:rgba(255,255,255,.8);margin-bottom:24px;max-width:400px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0}
+.hero-ctas .btn{padding:9px 18px;font-size:.75rem;min-height:38px;font-weight:600}
+.hero-st{display:none}
+.hero-st-v{font-family:var(--fd);font-size:1.9rem;font-weight:800;color:#fff;line-height:1.1}
+.hero-st-l{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:4px}
+
+
+/* Sections */
+.sec{padding:80px 0}
+.sec-dk{background:var(--az-sec);color:#fff}
+.sec-dk h2,.sec-dk h3{color:#fff}
+.sec-alt{background:#fff}
+.sec-hd{text-align:center;max-width:700px;margin:0 auto 56px}
+.sec-hd h2{margin-bottom:14px}
+.sec-hd p{font-size:1.05rem;color:var(--muted);margin:0 auto}
+.sec-dk .sec-hd p{color:rgba(255,255,255,.7)}
+.sec-lb{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--la-tx);margin-bottom:10px}
+
+/* Problem */
+.pbm-sec{background:linear-gradient(180deg,var(--of),#fff)}
+.pbm-g{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+.pbm-tx{font-size:1.05rem;color:var(--tx);margin-bottom:24px}
+.pbm-st{font-family:var(--fd);font-size:clamp(3.5rem,10vw,7rem);font-weight:800;color:var(--la-dk);line-height:1;margin-bottom:12px}
+.pbm-st-l{font-size:1.05rem;color:var(--muted);margin-bottom:28px}
+.pbm-cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cmp-c{padding:20px;border-radius:12px;text-align:center;border:1px solid transparent;transition:all .3s}
+.cmp-c.neg{background:rgba(255,107,44,.06);border-color:rgba(194,65,12,.22)}
+.cmp-c.neg:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(194,65,12,.12)}
+.cmp-c.pos{background:rgba(0,168,204,.05);border-color:rgba(0,168,204,.14)}
+.cmp-c.pos:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,168,204,.12)}
+.cmp-v{font-family:var(--fd);font-size:1.5rem;font-weight:700;margin-bottom:4px}
+.cmp-c.neg .cmp-v{color:var(--la-tx)}.cmp-c.pos .cmp-v{color:var(--az)}
+.cmp-lb{font-size:.85rem;color:var(--muted)}
+.pbm-src{margin-top:28px;padding-top:20px;border-top:1px solid var(--bd);font-size:.8rem;color:var(--muted)}
+.pbm-vis{padding:40px;background:var(--az-sec);border-radius:16px;color:#fff}
+.pbm-vis h3{color:#fff;margin-bottom:28px;text-align:center}
+.dt-cd{background:rgba(255,255,255,.08);border-radius:12px;padding:20px;margin-bottom:14px;border-left:3px solid var(--la)}
+.dt-cd:last-child{margin-bottom:0}
+.dt-v{font-family:var(--fd);font-size:2.2rem;font-weight:800;color:var(--la)}
+.dt-lb{font-size:.9rem;opacity:.9;margin-top:6px}
+
+/* Solution */
+.sol-sec{background:#fff}
+.sol-fw{display:grid;gap:18px;margin-top:40px}
+.fl-it{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:28px;background:var(--of);border-radius:14px;transition:all .3s}
+.fl-it:hover{transform:translateX(6px);box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.fl-nm{width:44px;height:44px;background:var(--az);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;font-weight:700}
+.fl-ct h3{font-size:1.15rem;margin-bottom:8px}
+.fl-ls{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.fl-ls li{display:flex;align-items:center;gap:5px;font-size:.85rem;color:var(--muted)}
+.fl-ls li::before{content:'';width:5px;height:5px;background:var(--la-dk);border-radius:50%}
+
+/* About */
+.abt-g{display:grid;grid-template-columns:1fr;gap:40px}
+.abt-img{aspect-ratio:16/10;object-fit:cover;border-radius:16px;width:100%;display:block;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+.abt-ct h2{margin-bottom:20px}
+.abt-tx{font-size:1.05rem;color:var(--tx);margin-bottom:12px}
+.abt-pl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.pl-c{text-align:center;padding:20px;background:var(--of);border-radius:12px}
+.pl-nm{font-family:var(--fd);font-size:1.75rem;font-weight:800;color:var(--la-dk);margin-bottom:4px}
+.pl-tl{font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--az)}
+
+/* Mission / Vision / Values — modern bento */
+.guide-sec{position:relative;background:radial-gradient(1100px 480px at 50% -10%,rgba(0,168,204,.18) 0%,rgba(0,168,204,0) 62%),linear-gradient(180deg,#071220 0%,var(--az-sec) 46%,#0C1E35 100%);color:#fff;overflow:hidden}
+.guide-sec::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,168,204,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,168,204,.055) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(900px 420px at 50% 0%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(900px 420px at 50% 0%,#000 20%,transparent 80%);pointer-events:none}
+.guide-sec .ctn{position:relative;z-index:1}
+.mis-hero{padding:48px 52px 52px;border-radius:22px;position:relative;border:1px solid rgba(0,168,204,.42);background:linear-gradient(180deg,rgba(0,168,204,.16) 0%,rgba(0,168,204,.02) 44%,transparent 100%),#0C2138;box-shadow:0 30px 70px rgba(3,10,20,.5);overflow:hidden}
+.mis-hero::after{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,var(--az) 0%,var(--az-ht) 55%,var(--la) 100%);border-radius:22px 22px 0 0}
+.mis-hero .mis-h{font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.3;max-width:660px}
+.mis-hero .mis-h em{font-style:normal;color:var(--la)}
+.mis-hero .mis-tx{max-width:520px;font-size:1.02rem}
+.mis-hero .mis-idx{color:var(--az-ht)}
+.mis-hero .mis-idx::after{background:rgba(0,168,204,.45)}
+.mis-hero::before{content:"01";position:absolute;right:36px;bottom:4px;font-family:var(--fd);font-weight:800;font-size:7rem;line-height:1;letter-spacing:-.04em;color:rgba(255,255,255,.08);user-select:none}
+.mis-qt{position:absolute;top:6px;right:28px;font-family:Georgia,serif;font-size:6.5rem;line-height:1;color:rgba(0,168,204,.16);font-weight:700;user-select:none}
+.mis-b{position:relative;padding:32px;background:linear-gradient(165deg,rgba(0,168,204,.13) 0%,rgba(255,255,255,.04) 52%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.16);border-radius:22px;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s}
+.mis-b:hover{transform:translateY(-4px);border-color:rgba(0,168,204,.6);box-shadow:0 18px 44px rgba(0,168,204,.16)}
+.mis-idx{display:flex;align-items:center;gap:12px;font-family:var(--fd);font-size:.76rem;font-weight:700;letter-spacing:.16em;color:var(--az-ht);margin-bottom:20px}
+.mis-idx::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.16)}
+.mis-h{font-family:var(--fd);font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3}
+.mis-tx{color:rgba(255,255,255,.84);line-height:1.72;font-size:.96rem}
+.mis-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.mis-side .mis-h{font-size:1.2rem}
+.mis-val{border-color:rgba(0,168,204,.42);background:linear-gradient(165deg,rgba(0,168,204,.14) 0%,rgba(255,255,255,.03) 100%)}
+.mis-val:hover{border-color:rgba(0,168,204,.75)}
+.val-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.val-tg{position:relative;padding:18px 12px;background:linear-gradient(135deg,#00A8CC 0%,#008DAD 100%);border:1px solid rgba(255,255,255,.28);border-radius:14px;font-weight:700;font-size:.9rem;color:#fff;text-align:center;box-shadow:0 10px 22px rgba(0,168,204,.24);transition:transform .25s,box-shadow .25s,filter .25s}
+.val-tg::before{content:attr(data-i);display:block;font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.92);margin-bottom:8px}
+.val-tg:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(0,168,204,.36);filter:brightness(1.1)}
+
+/* Team */
+.tea-sec{background:var(--of)}
+.tea-g{display:grid;gap:28px}
+.tea-cd{background:#fff;border-radius:16px;overflow:hidden}
+.tea-ph{aspect-ratio:16/9;background:linear-gradient(135deg,#3a3a3a,#1a1a1a)}
+.tea-in{padding:28px}
+.tea-nm{font-family:var(--fd);font-size:1.35rem;font-weight:700;margin-bottom:2px}
+.tea-rl{font-size:.85rem;font-weight:600;color:var(--la-tx);margin-bottom:12px}
+.tea-bio{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+/* Services */
+.srv-g{display:grid;gap:18px}
+.srv-cat{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--bd);transition:all .3s}
+.srv-cat:hover{transform:translateY(-4px);border-color:var(--az);box-shadow:0 16px 36px rgba(0,168,204,.1)}
+.cat-hd{padding:20px;background:var(--az);color:#fff;display:flex;align-items:center;gap:14px}
+.cat-ic{width:42px;height:42px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-ic svg{width:20px;height:20px;color:#fff;opacity:.92}
+.cat-tl{font-size:1.1rem;font-weight:700;color:#fff}
+.cat-sv{padding:20px;display:grid;gap:10px}
+.sv-it{display:flex;align-items:flex-start;gap:10px;padding:14px;background:var(--of);border-radius:8px;transition:all .2s}
+.sv-it:hover{background:rgba(255,107,44,.08);transform:translateX(3px)}
+.sv-bl{width:6px;height:6px;background:var(--az);border-radius:50%;margin-top:6px;flex-shrink:0}
+.sv-tx{font-size:.9rem;color:var(--tx)}
+
+/* Public */
+.pub-sec{background:var(--az-sec)}
+.pub-g{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.pub-cd{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;cursor:pointer}
+.pub-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--az-dk),#050D1F)}
+.pub-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.65));transition:all .3s}
+.pub-cd:hover .pub-ov{background:linear-gradient(180deg,transparent,rgba(0,0,0,.8))}
+.pub-ct{position:absolute;bottom:0;left:0;right:0;padding:20px;color:#fff}
+.pub-tl{font-family:var(--fd);font-size:1.15rem;font-weight:700}
+.pub-ic{position:absolute;top:20px;right:20px;width:42px;height:42px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-8px);transition:all .3s}
+.pub-cd:hover .pub-ic{opacity:1;transform:translateY(0)}
+
+/* Usina */
+.usn-sec{background:linear-gradient(180deg,#fff,var(--of))}
+.usn-hr{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;margin-bottom:56px}
+.usn-img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;box-shadow:0 18px 48px -18px rgba(10,22,40,.35);background:var(--of)}
+.usn-st{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.usn-st-c{padding:20px;background:#fff;border-radius:12px;border:1px solid var(--bd);transition:all .3s;position:relative;overflow:hidden}
+.usn-st-c:hover{transform:translateY(-3px);border-color:var(--az);box-shadow:0 12px 28px rgba(0,168,204,.12)}
+.usn-st-l{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.usn-st-v{font-family:var(--fd);font-size:1.5rem;font-weight:800;color:var(--az)}
+.usn-st-a{color:var(--la-dk)}
+.usn-ph{display:grid;gap:18px}
+.ph{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:28px;background:#fff;border-radius:14px;border:1px solid var(--bd);transition:all .3s;position:relative}
+.ph:hover{transform:translateY(-3px);border-color:var(--az);box-shadow:0 14px 34px rgba(0,168,204,.12)}
+.ph-nm{width:50px;height:50px;background:linear-gradient(135deg,var(--az),var(--az-dk));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.35rem;font-weight:800;flex-shrink:0;box-shadow:0 6px 16px rgba(0,168,204,.3)}
+.ph-ct h3{font-size:1.15rem;margin-bottom:6px}
+.ph-ct p{font-size:.9rem;color:var(--muted)}
+
+/* Differential */
+.dff-g{display:grid;gap:18px}
+.dff-cd{display:flex;align-items:flex-start;gap:16px;padding:28px;background:rgba(255,255,255,.05);border-radius:14px;border:1px solid rgba(255,255,255,.08);transition:all .3s}
+.dff-cd:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.dff-ic{width:50px;height:50px;background:rgba(255,107,44,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dff-ic svg{width:24px;height:24px;color:var(--la)}
+.dff-ct h3{color:#fff;font-size:1.15rem;margin-bottom:6px}
+.dff-ct p{color:rgba(255,255,255,.7);font-size:.9rem}
+
+/* Calculator */
+.calc-sec{background:#fff}
+.calc-w{display:grid;grid-template-columns:1fr;gap:40px}
+.calc-fm{background:var(--of);padding:28px;border-radius:16px}
+.calc-fm h3{font-size:1.15rem;margin-bottom:20px}
+.fg{margin-bottom:16px}
+.fl{display:block;font-size:.85rem;font-weight:600;color:var(--az);margin-bottom:6px}
+.fi{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:8px;font-family:var(--fb);font-size:.95rem;transition:all .2s}
+.fi:focus{outline:none;border-color:var(--az);box-shadow:0 0 0 3px rgba(0,168,204,.12)}
+.fs{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:8px;font-family:var(--fb);font-size:.95rem;background:#fff;cursor:pointer}
+.calc-rs{display:none;background:var(--az-sec);color:#fff;padding:28px;border-radius:16px}
+.calc-rs.ac{display:block}
+.calc-rs h3{color:#fff;margin-bottom:20px}
+.rs-it{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.rs-it:last-child{border-bottom:none}
+.rs-lb{font-size:.9rem;opacity:.8}
+.rs-vl{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--la-tx)}
+
+/* Coverage */
+.cov-sec{background:var(--of)}
+.cov-map{aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin-bottom:28px;position:relative}
+.cov-inf{display:grid;gap:16px}
+.inf-cd{display:flex;align-items:center;gap:14px;padding:20px;background:#fff;border-radius:12px}
+.inf-ic{width:44px;height:44px;background:var(--of);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inf-ic svg{width:20px;height:20px;color:var(--az)}
+.inf-ct h4{font-size:.95rem;margin-bottom:2px}
+.inf-ct p{font-size:.85rem;color:var(--muted);margin:0}
+
+/* FAQ */
+.faq-sec{background:#fff}
+.faq-ls{max-width:800px;margin:0 auto}
+.faq-it{border-bottom:1px solid var(--bd)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;cursor:pointer;font-family:var(--fd);font-size:1.05rem;font-weight:600;color:var(--pr);text-align:left}
+.faq-q:focus{outline:2px solid var(--az);outline-offset:4px;border-radius:4px}
+.faq-q svg{width:20px;height:20px;color:var(--az);transition:transform .3s;flex-shrink:0;margin-left:12px}
+.faq-it.op .faq-q svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-in{padding:0 0 20px;font-size:.95rem;color:var(--tx);line-height:1.7}
+
+/* CTA */
+.cta-sec{background:var(--az-sec);text-align:center;padding:80px 0}
+.cta-sec h2{color:#fff;margin-bottom:16px}
+.cta-sec p{color:rgba(255,255,255,.7);margin:0 auto 32px;font-size:1.05rem}
+.cta-bt{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* Footer */
+.ftr{background:#0A1628;color:rgba(255,255,255,.7);padding:48px 0 24px}
+.ftr-g{display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:32px}
+.ftr-brand{max-width:320px}
+.ftr-brand .logo{color:#fff;margin-bottom:12px}
+.ftr-brand p{font-size:.9rem;line-height:1.6}
+.ftr-col h4{font-family:var(--fd);font-size:.9rem;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:.02em}
+.ftr-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ftr-col a{font-size:.85rem;transition:color .2s}
+.ftr-col a:hover{color:var(--la)}
+.ftr-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:.8rem}
+
+/* Responsive */
+@media(max-width:520px){
+.ctn{padding:0 18px}
+.hdr-in{height:64px}
+.logo{font-size:1.2rem}
+.mb-mn{top:64px}
+.sec{padding:56px 0}
+.hero{padding-top:64px;padding-bottom:56px;min-height:auto}
+.hero-tag{display:none}
+.hero-st{grid-template-columns:repeat(3,1fr);gap:10px;padding-top:20px}
+.hero-st-v{font-size:1.3rem}
+.hero-st-l{font-size:.72rem;line-height:1.4}
+.pbm-cmp{grid-template-columns:1fr}
+.pbm-vis{padding:24px}
+.dt-v{font-size:1.8rem}
+.fl-it{grid-template-columns:1fr;gap:14px}
+.abt-pl{gap:10px}
+.pl-c{padding:16px 10px}
+.pl-nm{font-size:1.5rem}
+.val-g{grid-template-columns:repeat(2,1fr)}
+.pub-g{grid-template-columns:1fr}
+.usn-st{grid-template-columns:1fr}
+.ph{grid-template-columns:1fr;gap:14px}
+.calc-fm{padding:22px}
+.calc-w{gap:28px}
+.cta-sec{padding:56px 0}
+}
+@media(max-width:767px){
+.hdr-cta{display:none}
+.mb-bar{display:block}
+body{padding-bottom:76px}
+.hero-in{grid-template-columns:1fr}
+.hero-ct{max-width:100%;padding-right:0}
+.hero-vid{opacity:.7}
+.hero-ov{background:linear-gradient(100deg,rgba(5,13,31,.93) 0%,rgba(5,13,31,.8) 60%,rgba(5,13,31,.58) 100%)}
+.hero-tx{max-width:100%}
+.mis-row{grid-template-columns:1fr}.val-g{grid-template-columns:repeat(2,1fr)}.mis-hero{padding:32px 24px}.mis-qt{right:20px;font-size:4rem}
+.wa-wrap{right:14px;bottom:calc(88px + env(safe-area-inset-bottom))}
+.wa-fab{width:56px;height:56px}
+.wa-card{width:290px}
+}
+@media(min-width:521px) and (max-width:767px){
+.hero{padding-top:104px;padding-bottom:72px;min-height:auto}
+.hero-st{gap:14px}
+.hero-st-v{font-size:1.5rem}
+.hero-st-l{font-size:.76rem}
+.pub-g{gap:14px}
+.usn-hr{margin-bottom:44px}
+.cta-sec{padding:64px 0}
+}
+@media(min-width:768px){
+.hm-tg{display:none}
+.nav-dk{display:flex;align-items:center;gap:24px}
+.hero-in{gap:48px}
+.pbm-g{grid-template-columns:1fr 1fr}
+.abt-g{grid-template-columns:1fr 1fr}
+.tea-g{grid-template-columns:1fr 1fr}
+.srv-g{grid-template-columns:1fr 1fr}
+.calc-w{grid-template-columns:1fr 1fr}
+.ftr-g{grid-template-columns:2fr 1fr 1fr 1fr}
+.ftr-bt{flex-direction:row;justify-content:space-between}
+}
+@media(max-width:900px) and (min-width:768px){
+.nav-ls{gap:18px}
+.nav-lk{font-size:.8rem}
+.hdr-cta .btn{padding:10px 16px;font-size:.78rem}
+.val-g{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:1024px){
+.hero-in{gap:56px}
+.pbm-g{grid-template-columns:55% 45%}
+.pub-g{grid-template-columns:repeat(5,1fr)}
+.pub-cd{aspect-ratio:3/4}
+}
+</style>
+</head>
+<body>
+<div class="pg" aria-hidden="true"><i></i></div>
+<!-- Header -->
+<header class="hdr" data-od-id="header" id="topo">
+  <div class="ctn hdr-in">
+    <a href="#topo" class="logo" data-od-id="logo">
+      <img src="/api/projects/7a017001-cf7f-4ea3-945d-29dc65b898fe/raw/logo.jpg?workspaceId=kweaobdrt0tcnunmwg307kvx&amp;workspaceMemberId=lrg0msigtsnqogp6n3ni5kx6" alt="Fótons Energia Solar" class="logo-img">
+    </a>
+    <nav class="nav-dk" aria-label="Navegação principal">
+      <ul class="nav-ls">
+        <li><a class="nav-lk" href="#topo" data-od-id="nav-home">Home</a></li>
+        <li><a class="nav-lk" href="#solucoes" data-od-id="nav-solucoes">Soluções</a></li>
+        <li><a class="nav-lk" href="#usina" data-od-id="nav-usina">Usina</a></li>
+        <li><a class="nav-lk" href="#contato" data-od-id="nav-contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-p" href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener" data-od-id="cta-orcamento-header">Solicitar orçamento</a>
+    </div>
+    <button class="hm-tg" aria-label="Abrir menu" aria-expanded="false" data-od-id="menu-toggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mb-mn" id="mb-mn" data-od-id="mobile-menu">
+  <nav>
+    <ul class="mb-nl">
+      <li><a href="#topo">Home</a></li>
+      <li><a href="#solucoes">Soluções</a></li>
+      <li><a href="#usina">Usina</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+  <div class="mb-ct">
+    <a class="btn btn-p" href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener">Solicitar orçamento</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" data-od-id="hero">
+  <video class="hero-vid" autoplay="" muted="" loop="" playsinline="" preload="auto" disablepictureinpicture="" aria-hidden="true" onloadeddata="this.play().catch(()=&gt;{})">
+    <source src="/api/projects/7a017001-cf7f-4ea3-945d-29dc65b898fe/raw/Engineers_discussing_solar_panel__202608111849.mp4?workspaceId=kweaobdrt0tcnunmwg307kvx&amp;workspaceMemberId=lrg0msigtsnqogp6n3ni5kx6" type="video/mp4">
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+  <div class="hero-ov" aria-hidden="true"></div>
+  <div class="hero-gr" aria-hidden="true"></div>
+  <div class="ctn hero-in">
+    <div class="hero-ct reveal">
+      <span class="hero-bd"><span class="hero-bd-dot"></span> Engenharia elétrica e energia solar</span>
+      <h1 class="hero-tt">Energia solar inteligente para<br> <span class="hero-tt-ac">reduzir custos</span> e aumentar sua<br> independência energética.</h1>
+      <p class="hero-tx">Projetos solares e elétricos desenvolvidos por engenharia especializada, com acompanhamento técnico completo do planejamento à entrega.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-p" href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener" data-od-id="cta-orcamento-hero">Solicitar orçamento</a>
+        <a class="btn btn-w" href="#contato" data-od-id="cta-engenheiro-hero">Falar com um engenheiro</a>
+      </div>
+      <div class="hero-st">
+        <div class="hero-st-c"><div class="hero-st-v"><span data-count="15" data-prefix="+">+15</span> anos</div><div class="hero-st-l">de experiência técnica</div></div>
+        <div class="hero-st-c"><div class="hero-st-v"><span data-count="100" data-suffix="%">100%</span></div><div class="hero-st-l">energia renovável</div></div>
+        <div class="hero-st-c"><div class="hero-st-v">Vale</div><div class="hero-st-l">do Paraíba</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Problem -->
+<section class="sec pbm-sec" data-od-id="problema">
+  <div class="ctn">
+    <div class="pbm-g">
+      <div>
+        <span class="sec-lb">O problema</span>
+        <h2>O preço da energia subiu. Sua estratégia precisa mudar.</h2>
+        <p class="pbm-tx">Nos últimos 15 anos, a tarifa de energia elétrica subiu 45% acima da inflação, segundo a Abraceel. Crises hídricas, uso de termelétricas e pouca concorrência fizeram o custo da energia disparar — deixando consumidores e empresas cada vez mais expostos.</p>
+        <div class="pbm-st"><span data-count="45" data-prefix="+" data-suffix="%">+45%</span></div>
+        <div class="pbm-st-l">Aumento da tarifa de energia acima da inflação em 15 anos.</div>
+        <div class="pbm-cmp">
+          <div class="cmp-c neg">
+            <div class="cmp-v">Energia tradicional</div>
+            <div class="cmp-lb">Custo crescente a cada ano</div>
+          </div>
+          <div class="cmp-c pos">
+            <div class="cmp-v">Energia solar</div>
+            <div class="cmp-lb">Custo fixado na instalação</div>
+          </div>
+        </div>
+        <div class="pbm-src">Fontes: Abraceel, Portal Solar e Canal Solar.</div>
+      </div>
+      <div class="pbm-vis reveal delay-1">
+        <h3>O impacto em números</h3>
+        <div class="dt-cd">
+          <div class="dt-v"><span data-count="71" data-prefix="-" data-suffix="%">-71%</span></div>
+          <div class="dt-lb">Queda no custo médio de instalação de sistemas solares.</div>
+        </div>
+        <div class="dt-cd">
+          <div class="dt-v"><span data-count="85" data-prefix="R$ " data-suffix=" bi">R$ 85 bi</span></div>
+          <div class="dt-lb">Economizados pelos consumidores brasileiros com geração própria de energia solar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="sec sol-sec" data-od-id="solucao">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">A solução</span>
+      <h2>O caminho mais inteligente para economizar energia.</h2>
+      <p>A energia solar não é apenas o futuro. É uma decisão inteligente para o presente.</p>
+    </div>
+    <div class="sol-fw">
+      <div class="fl-it reveal" data-od-id="antes-card">
+        <div class="fl-nm">01</div>
+        <div class="fl-ct">
+          <h3>Antes</h3>
+          <ul class="fl-ls">
+            <li>Conta de energia cara</li>
+            <li>Custos crescentes</li>
+            <li>Dependência da concessionária</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fl-it reveal" data-od-id="depois-card">
+        <div class="fl-nm">02</div>
+        <div class="fl-ct">
+          <h3>Depois</h3>
+          <ul class="fl-ls">
+            <li>Geração própria</li>
+            <li>Maior previsibilidade</li>
+            <li>Economia real</li>
+            <li>Independência energética</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="sec sec-alt" id="empresa" data-od-id="empresa">
+  <div class="ctn">
+    <div class="abt-g">
+      <img class="abt-img" src="/api/projects/7a017001-cf7f-4ea3-945d-29dc65b898fe/raw/somos%20a%20fotons.jpg?workspaceId=kweaobdrt0tcnunmwg307kvx&amp;workspaceMemberId=lrg0msigtsnqogp6n3ni5kx6" alt="Equipe Fótons Energia Solar" data-od-id="empresa-imagem">
+      <div class="abt-ct">
+        <span class="sec-lb">A empresa</span>
+        <h2>Somos a Fótons Energia Solar.</h2>
+        <p class="abt-tx">Fundada em 2019, a Fótons Energia Solar é uma empresa de engenharia elétrica especializada em projetos solares e sistemas elétricos, oferecendo soluções completas com confiança e qualidade.</p>
+        <p class="abt-tx">Desenvolvemos projetos sob medida, pensados para atender as necessidades de cada cliente e gerar o melhor retorno possível.</p>
+        <div class="abt-pl">
+          <div class="pl-c" data-od-id="pilar-engenharia"><div class="pl-nm">01</div><div class="pl-tl">Engenharia</div></div>
+          <div class="pl-c" data-od-id="pilar-transparencia"><div class="pl-nm">02</div><div class="pl-tl">Transparência</div></div>
+          <div class="pl-c" data-od-id="pilar-resultado"><div class="pl-nm">03</div><div class="pl-tl">Resultado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission/Vision/Values -->
+<section class="sec sec-dk guide-sec" data-od-id="missao-visao-valores">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb" style="color:var(--la)">Propósito</span>
+      <h2>O que nos guia.</h2>
+      <p>Os princípios que orientam cada projeto — do dimensionamento à entrega do sistema.</p>
+    </div>
+    <div class="mis-b mis-hero reveal" data-od-id="missao-card">
+      <span class="mis-qt" aria-hidden="true">"</span>
+      <div class="mis-idx">01 · Missão</div>
+      <h3 class="mis-h">Entregar soluções que <em>façam sentido</em> para cada cliente.</h3>
+      <p class="mis-tx">Um trabalho técnico sério, conduzido de forma clara do início ao fim — da primeira conversa à entrega do sistema.</p>
+    </div>
+    <div class="mis-row">
+      <div class="mis-b mis-side reveal" style="transition-delay:.1s" data-od-id="visao-card">
+        <div class="mis-idx">02 · Visão</div>
+        <h3 class="mis-h">Ser referência no Vale do Paraíba.</h3>
+        <p class="mis-tx">Construir uma trajetória sólida como empresa confiável em projetos elétricos e solares, reconhecida pela seriedade do trabalho e pelo relacionamento próximo com cada cliente.</p>
+      </div>
+      <div class="mis-b mis-val reveal" style="transition-delay:.2s" data-od-id="valores-card">
+        <div class="mis-idx">03 · Valores</div>
+        <div class="val-g">
+          <div class="val-tg" data-i="01">Clareza</div>
+          <div class="val-tg" data-i="02">Transparência</div>
+          <div class="val-tg" data-i="03">Responsabilidade</div>
+          <div class="val-tg" data-i="04">Excelência técnica</div>
+          <div class="val-tg" data-i="05">Proximidade</div>
+          <div class="val-tg" data-i="06">Evolução</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Team -->
+<section class="sec tea-sec" data-od-id="equipe">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">Equipe executiva</span>
+      <h2>Engenharia por trás de cada projeto.</h2>
+    </div>
+    <div class="tea-g">
+      <div class="tea-cd" data-od-id="team-remulo">
+        <div class="tea-ph"></div>
+        <div class="tea-in">
+          <div class="tea-nm">Julio Flávio Pizarro</div>
+          <div class="tea-rl">CEO</div>
+          <p class="tea-bio">Engenheiro eletricista com mais de 5 anos de experiência em projetos e fiscalização de sistemas de distribuição de energia.</p>
+        </div>
+      </div>
+      <div class="tea-cd" data-od-id="team-julio">
+        <div class="tea-ph"></div>
+        <div class="tea-in">
+          <div class="tea-nm">Rêmulo David Dias</div>
+          <div class="tea-rl">COO</div>
+          <p class="tea-bio">Engenheiro eletricista com mais de 15 anos de experiência e atuação na Siemens Energy, onde desenvolveu projetos voltados a sistemas de controle e proteção em diferentes segmentos do setor energético.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="sec sec-alt" id="solucoes" data-od-id="solucoes">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">Soluções</span>
+      <h2>O que fazemos na prática?</h2>
+      <p>Soluções completas em energia solar e engenharia elétrica, do projeto à operação.</p>
+    </div>
+    <div class="srv-g">
+      <div class="srv-cat reveal" data-od-id="cat-energia-solar">
+        <div class="cat-hd">
+          <div class="cat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
+          </div>
+          <div class="cat-tl">Energia Solar</div>
+        </div>
+        <div class="cat-sv">
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projeto de sistema fotovoltaico</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Implantação completa de usinas fotovoltaicas de 75 kW</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Dimensionamento de cabos MT e BT</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projeto padrão concessionária</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Assessoria de documentação para concessionárias</span></div>
+        </div>
+      </div>
+      <div class="srv-cat reveal" data-od-id="cat-engenharia">
+        <div class="cat-hd">
+          <div class="cat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <div class="cat-tl">Engenharia Elétrica</div>
+        </div>
+        <div class="cat-sv">
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Instalações elétricas residenciais, comerciais, prediais e industriais</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projeto de subestação aérea até 300 kVA</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Painéis MT e BT</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Análise de redes industriais</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Avaliação de ajustes de seletividade e proteção</span></div>
+        </div>
+      </div>
+      <div class="srv-cat reveal" data-od-id="cat-laudos">
+        <div class="cat-hd">
+          <div class="cat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18"></path><path d="M5 7h14"></path><path d="M5 12h14"></path><path d="M5 17h14"></path></svg>
+          </div>
+          <div class="cat-tl">Laudos e Segurança</div>
+        </div>
+        <div class="cat-sv">
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">SPDA</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Laudos técnicos</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Vistorias</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Termografia de painéis</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Manobras em chaves fusíveis MT e BT</span></div>
+        </div>
+      </div>
+      <div class="srv-cat reveal" data-od-id="cat-infraestrutura">
+        <div class="cat-hd">
+          <div class="cat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 20h20"></path><path d="M4 20V8M9 20V4M14 20v-8M19 20V10"></path></svg>
+          </div>
+          <div class="cat-tl">Infraestrutura</div>
+        </div>
+        <div class="cat-sv">
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projeto de medição coletiva</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projeto de rede de telefonia e antena</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Projetos de renovação de ar</span></div>
+        </div>
+      </div>
+      <div class="srv-cat reveal" data-od-id="cat-tecnologia">
+        <div class="cat-hd">
+          <div class="cat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="12" r="3"></circle><path d="M8.5 7.5l6 3M8.5 16.5l6-3"></path></svg>
+          </div>
+          <div class="cat-tl">Tecnologia Industrial</div>
+        </div>
+        <div class="cat-sv">
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Profibus</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Profinet</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">Modbus</span></div>
+          <div class="sv-it"><span class="sv-bl"></span><span class="sv-tx">IEC 61850</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Public -->
+<section class="sec pub-sec" data-od-id="publico">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb" style="color:var(--la)">Público</span>
+      <h2 style="color: rgb(249, 115, 22);">Projetos para diferentes realidades.</h2>
+      <p style="color:rgba(255,255,255,.7)">Da residência à indústria, cada projeto é dimensionado para a necessidade real de quem vai usá-lo.</p>
+    </div>
+    <div class="pub-g">
+      <div class="pub-cd" data-od-id="pub-residencias">
+        <div class="pub-bg" style="background:url('./residencia.jpeg') center/cover no-repeat"></div><div class="pub-ov"></div>
+        <div class="pub-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B2C" stroke-width="2" stroke-linecap="round"><path d="M5 12l7-7 7 7"></path><path d="M9 21V10h6v11"></path></svg></div>
+        <div class="pub-ct"><div class="pub-tl">Residências</div></div>
+      </div>
+      <div class="pub-cd" data-od-id="pub-empresas">
+        <div class="pub-bg" style="background:url('./Commercial.jpeg') center/cover no-repeat"></div><div class="pub-ov"></div>
+        <div class="pub-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B2C" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"></path></svg></div>
+        <div class="pub-ct"><div class="pub-tl">Empresas e comércios</div></div>
+      </div>
+      <div class="pub-cd" data-od-id="pub-industrias">
+        <div class="pub-bg" style="background:url('./industria.jpeg') center/cover no-repeat"></div><div class="pub-ov"></div>
+        <div class="pub-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B2C" stroke-width="2" stroke-linecap="round"><path d="M2 20h20M4 20V8l6 4V8l6 4V4h4"></path></svg></div>
+        <div class="pub-ct"><div class="pub-tl">Indústrias</div></div>
+      </div>
+      <div class="pub-cd" data-od-id="pub-condominios">
+        <div class="pub-bg" style="background:url('./condominio.jpeg') center/cover no-repeat"></div><div class="pub-ov"></div>
+        <div class="pub-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B2C" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-4h4v4"></path></svg></div>
+        <div class="pub-ct"><div class="pub-tl">Condomínios</div></div>
+      </div>
+      <div class="pub-cd" data-od-id="pub-rurais">
+        <div class="pub-bg" style="background:url('./rural.jpeg') center/cover no-repeat"></div><div class="pub-ov"></div>
+        <div class="pub-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B2C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"></path></svg></div>
+        <div class="pub-ct"><div class="pub-tl">Propriedades rurais</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Usina -->
+<section class="sec usn-sec" id="usina" data-od-id="usina">
+  <div class="ctn">
+    <div class="usn-hr reveal">
+      <img class="usn-img" src="./Usina Fotovoltaica.jpeg" alt="Usina fotovoltaica Fótons Energia Solar" data-od-id="usina-imagem" loading="lazy">
+      <div>
+        <span class="sec-lb">Destaque</span>
+        <h2>Usina Fotovoltaica 75 kW</h2>
+        <p style="font-size:1.15rem;color:var(--muted);margin:12px 0 28px;max-width:520px">Transforme investimento em energia limpa e retorno financeiro.</p>
+        <div class="usn-st">
+          <div class="usn-st-c" data-od-id="usina-investimento"><div class="usn-st-l">Investimento</div><div class="usn-st-v">R$ 235 a 250 mil</div></div>
+          <div class="usn-st-c" data-od-id="usina-retorno"><div class="usn-st-l">Retorno médio</div><div class="usn-st-v usn-st-a">25% ao ano</div></div>
+          <div class="usn-st-c" data-od-id="usina-vida"><div class="usn-st-l">Vida útil</div><div class="usn-st-v">25+ anos</div></div>
+          <div class="usn-st-c" data-od-id="usina-energia"><div class="usn-st-l">Energia</div><div class="usn-st-v">100% renovável</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="usn-ph reveal">
+      <div class="ph reveal" data-od-id="fase-1">
+        <div class="ph-nm">01</div>
+        <div class="ph-ct">
+          <h3>Planejamento e viabilidade</h3>
+          <p>Análise técnica e financeira, definição do escopo e elaboração do projeto elétrico para homologação junto à concessionária.</p>
+        </div>
+      </div>
+      <div class="ph reveal" data-od-id="fase-2">
+        <div class="ph-nm">02</div>
+        <div class="ph-ct">
+          <h3>Construção e montagem</h3>
+          <p>Execução da infraestrutura, instalação dos painéis solares, inversores e sistemas de proteção.</p>
+        </div>
+      </div>
+      <div class="ph reveal" data-od-id="fase-3">
+        <div class="ph-nm">03</div>
+        <div class="ph-ct">
+          <h3>Operação e monitoramento</h3>
+          <p>Monitoramento do sistema e manutenção preventiva para garantir desempenho e disponibilidade.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a class="btn btn-p" href="#contato" data-od-id="cta-usina">Quero conhecer a usina</a>
+    </div>
+  </div>
+</section>
+<!-- Differential -->
+<section class="sec sec-dk" id="porque" data-od-id="porque">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb" style="color:var(--la)">Diferencial</span>
+      <h2>Por que a Fótons?</h2>
+      <p style="color:rgba(255,255,255,.7)">Engenharia de verdade, do projeto à operação do sistema.</p>
+    </div>
+    <div class="dff-g">
+      <div class="dff-cd reveal" data-od-id="diff-engenharia">
+        <div class="dff-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+        <div class="dff-ct">
+          <h3>Engenharia especializada</h3>
+          <p>Projetos assinados e executados por engenheiros eletricistas, com experiência no setor de energia.</p>
+        </div>
+      </div>
+      <div class="dff-cd reveal" data-od-id="diff-acompanhamento">
+        <div class="dff-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+        <div class="dff-ct">
+          <h3>Acompanhamento completo</h3>
+          <p>Do levantamento de viabilidade à homologação, cada etapa é conduzida e documentada pelo nosso time.</p>
+        </div>
+      </div>
+      <div class="dff-cd reveal" data-od-id="diff-transparencia">
+        <div class="dff-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div>
+        <div class="dff-ct">
+          <h3>Transparência total</h3>
+          <p>Orçamentos claros, prazos definidos e comunicação direta em todas as fases do projeto.</p>
+        </div>
+      </div>
+      <div class="dff-cd reveal" data-od-id="diff-retorno">
+        <div class="dff-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg></div>
+        <div class="dff-ct">
+          <h3>Foco no retorno</h3>
+          <p>Sistemas dimensionados para o melhor retorno sobre investimento, com expectativas claras desde o início.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section class="sec calc-sec" data-od-id="calculadora">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">Estimativa</span>
+      <h2>Simule sua economia.</h2>
+      <p>Uma estimativa inicial baseada no seu consumo. O projeto definitivo é elaborado pela nossa engenharia.</p>
+    </div>
+    <div class="calc-w">
+      <div class="calc-fm" data-od-id="calc-form">
+        <h3>Dados do consumo</h3>
+        <div class="fg">
+          <label class="fl" for="calc-consumo">Consumo médio mensal (kWh)</label>
+          <input class="fi" type="number" id="calc-consumo" placeholder="Ex.: 350" min="100" data-od-id="calc-consumo-input">
+        </div>
+        <div class="fg">
+          <label class="fl" for="calc-perfil">Perfil de consumo</label>
+          <select class="fs" id="calc-perfil" data-od-id="calc-perfil-select">
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+            <option value="industrial">Industrial</option>
+          </select>
+        </div>
+        <button class="btn btn-p calc-btn" id="calc-btn" data-od-id="calc-btn">Calcular economia</button>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:14px">Valores estimados apenas para orientação. Cada projeto passa por análise técnica detalhada.</p>
+      </div>
+      <div class="calc-rs" id="calc-rs" data-od-id="calc-resultados">
+        <h3>Resultado estimado</h3>
+        <div class="rs-it"><span class="rs-lb">Potência sugerida</span><span class="rs-vl" id="calc-pot">—</span></div>
+        <div class="rs-it"><span class="rs-lb">Economia mensal</span><span class="rs-vl" id="calc-economia">—</span></div>
+        <div class="rs-it"><span class="rs-lb">Economia anual</span><span class="rs-vl" id="calc-anual">—</span></div>
+        <div class="rs-it"><span class="rs-lb">Investimento estimado</span><span class="rs-vl" id="calc-invest">—</span></div>
+        <div class="rs-it"><span class="rs-lb">Retorno estimado</span><span class="rs-vl" id="calc-retorno">—</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coverage -->
+<section class="sec cov-sec" id="atuacao" data-od-id="atuacao">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">Atuação</span>
+      <h2>Onde a Fótons atende.</h2>
+      <p>Atendimento em toda a região do Vale do Paraíba.</p>
+    </div>
+    <div class="cov-map reveal" data-od-id="atuacao-mapa" style="background:linear-gradient(135deg,#0A1628,#0E2B57);border:1px solid rgba(255,255,255,.08)">
+      <svg viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%">
+        <defs>
+          <pattern id="bp-grid" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,.14)"></circle></pattern>
+          <linearGradient id="bp-track" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00A8CC"></stop><stop offset="1" stop-color="#FF6B2C"></stop></linearGradient>
+          <radialGradient id="bp-glow"><stop offset="0" stop-color="#2E8BFF" stop-opacity=".55"></stop><stop offset="1" stop-color="#2E8BFF" stop-opacity="0"></stop></radialGradient>
+        </defs>
+        <rect width="700" height="400" fill="url(#bp-grid)"></rect>
+        <path d="M40 345 C 170 320, 300 265, 430 205 S 620 140, 668 128" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="7 7"></path>
+        <path d="M40 345 C 170 320, 300 265, 430 205 S 620 140, 668 128" stroke="url(#bp-track)" stroke-width="3.5" stroke-dasharray="2 16" stroke-linecap="round" opacity=".9"></path>
+        <circle cx="430" cy="205" r="34" fill="url(#bp-glow)"></circle>
+        <g font-family="Inter,sans-serif" font-size="13" fill="rgba(255,255,255,.85)">
+          <circle cx="140" cy="262" r="4" fill="#00A8CC"></circle><text x="152" y="267">Jacareí</text>
+          <circle cx="260" cy="232" r="4" fill="#00A8CC"></circle><text x="272" y="237">Caçapava</text>
+          <circle cx="430" cy="205" r="6" fill="#FF6B2C" stroke="rgba(255,255,255,.5)" stroke-width="2"></circle><text x="446" y="211" font-weight="700">São José dos Campos</text>
+          <circle cx="520" cy="186" r="4" fill="#00A8CC"></circle><text x="532" y="191">Taubaté</text>
+          <circle cx="585" cy="166" r="4" fill="#00A8CC"></circle><text x="597" y="171">Pindamonhangaba</text>
+          <circle cx="645" cy="140" r="4" fill="#00A8CC"></circle><text x="657" y="145">Lorena</text>
+          <text x="40" y="48" font-family="'Courier New',monospace" font-size="12" letter-spacing="2" fill="rgba(255,255,255,.5)">VALE DO PARAÍBA · SP</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cov-inf reveal">
+      <div class="inf-cd" data-od-id="atuacao-regiao">
+        <div class="inf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></div>
+        <div class="inf-ct"><h4>Região atendida</h4><p>Vale do Paraíba e cidades da região</p></div>
+      </div>
+      <div class="inf-cd" data-od-id="atuacao-modalidade">
+        <div class="inf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 13h6"></path></svg></div>
+        <div class="inf-ct"><h4>Modalidades</h4><p>Projetos residenciais, comerciais, industriais, condomínios e rurais</p></div>
+      </div>
+      <div class="inf-cd" data-od-id="atuacao-atendimento">
+        <div class="inf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 0 1 10 10v7a2 2 0 0 1-2 2h-3v-8h4a8 8 0 0 0-8-8v-3z"></path><path d="M12 22v-3M2 12a10 10 0 0 0 10 10v-7H3a2 2 0 0 0-1 4v3"></path></svg></div>
+        <div class="inf-ct"><h4>Fale com a gente</h4><p>Atendimento próximo, direto com engenheiros</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq-sec" data-od-id="faq">
+  <div class="ctn">
+    <div class="sec-hd reveal">
+      <span class="sec-lb">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-ls">
+      <div class="faq-it" data-od-id="faq-1">
+        <button class="faq-q" aria-expanded="false">Quanto tempo leva para instalar um sistema solar?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">Depende do porte do projeto. Sistemas residenciais costumam ficar prontos em poucas semanas após a aprovação do projeto. Usinas de 75 kW seguem um cronograma definido em fases, que apresentamos na proposta.</div></div>
+      </div>
+      <div class="faq-it" data-od-id="faq-2">
+        <button class="faq-q" aria-expanded="false">Como funciona o retorno sobre o investimento?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">A economia gerada na conta de energia vai amortizando o investimento ao longo dos anos. Na usina de 75 kW, estimamos um retorno médio de 25% ao ano, com vida útil do sistema acima de 25 anos.</div></div>
+      </div>
+      <div class="faq-it" data-od-id="faq-3">
+        <button class="faq-q" aria-expanded="false">Vocês cuidam da documentação junto à concessionária?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">Sim. A assessoria de documentação para concessionárias faz parte das nossas soluções, incluindo projeto padrão, homologação e acompanhamento técnico.</div></div>
+      </div>
+      <div class="faq-it" data-od-id="faq-4">
+        <button class="faq-q" aria-expanded="false">Atendem residências ou apenas indústrias?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">Atendemos residências, empresas, comércios, indústrias, condomínios e propriedades rurais. Cada projeto é dimensionado para a realidade e a necessidade do cliente.</div></div>
+      </div>
+      <div class="faq-it" data-od-id="faq-5">
+        <button class="faq-q" aria-expanded="false">O que está incluído no acompanhamento técnico?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">Do planejamento à entrega, conduzimos análise de viabilidade, projeto elétrico, execução, homologação e, quando contratado, monitoramento e manutenção preventiva do sistema.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Final CTA -->
+<section class="cta-sec" id="contato" data-od-id="contato">
+  <div class="ctn">
+    <h2>Pronto para reduzir sua conta de energia?</h2>
+    <p>Fale com um de nossos engenheiros e receba uma proposta sob medida para o seu projeto.</p>
+    <div class="cta-bt reveal">
+      <a class="btn btn-a" href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener" data-od-id="cta-orcamento-final">Solicitar orçamento</a>
+      <a class="btn btn-w" href="mailto:contato@fotonsenergiasolar.com.br?subject=Falar%20com%20um%20engenheiro" data-od-id="cta-engenheiro-final">Falar com um engenheiro</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="ftr" data-od-id="footer">
+  <div class="ctn">
+    <div class="ftr-g">
+      <div class="ftr-brand">
+        <a href="#topo" class="logo">
+          <img src="/api/projects/7a017001-cf7f-4ea3-945d-29dc65b898fe/raw/logo.jpg?workspaceId=kweaobdrt0tcnunmwg307kvx&amp;workspaceMemberId=lrg0msigtsnqogp6n3ni5kx6" alt="Fótons Energia Solar" class="logo-img" style="height:48px">
+        </a>
+        <p>Engenharia elétrica e energia solar no Vale do Paraíba. Projetos completos com acompanhamento técnico do planejamento à entrega.</p>
+      </div>
+      <div class="ftr-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#empresa">A Empresa</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#usina">Usina 75 kW</a></li>
+          <li><a href="#porque">Por que a Fótons?</a></li>
+          <li><a href="#atuacao">Atuação</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="ftr-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="#solucoes">Energia Solar</a></li>
+          <li><a href="#solucoes">Engenharia Elétrica</a></li>
+          <li><a href="#solucoes">Laudos e Segurança</a></li>
+          <li><a href="#solucoes">Tecnologia Industrial</a></li>
+        </ul>
+      </div>
+      <div class="ftr-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@fotonsenergiasolar.com.br">contato@fotonsenergiasolar.com.br</a></li>
+          <li><a href="#contato">Vale do Paraíba — SP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-bt">
+      <span>© 2026 Fótons Energia Solar. Todos os direitos reservados.</span>
+      <span>Engenharia elétrica · Energia solar</span>
+    </div>
+  </div>
+</footer>
+
+<div class="wa-wrap" data-od-id="whatsapp-widget">
+  <div class="wa-card" id="wa-card" role="dialog" aria-label="Conversa no WhatsApp">
+    <div class="wa-hd">
+      <div class="wa-av" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16.04 4C9.43 4 4.05 9.38 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.19-1.62a11.94 11.94 0 0 0 5.85 1.51h.01c6.61 0 11.99-5.38 11.99-11.99C28.03 9.38 22.65 4 16.04 4zm0 21.9h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.67.96.98-3.58-.24-.37a9.9 9.9 0 0 1-1.52-5.32c0-5.5 4.48-9.98 9.98-9.98 5.49 0 9.98 4.48 9.98 9.98 0 5.5-4.49 9.9-9.09 9.9zm5.47-7.48c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+      </div>
+      <div class="wa-hd-tx">
+        <b>Fótons Energia Solar</b>
+        <span>Resposta rápida · online</span>
+      </div>
+      <span class="wa-dot" title="Online"></span>
+      <button class="wa-close" id="wa-close" aria-label="Fechar conversa">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="wa-bd">
+      <p>Olá! Tudo bem? Como podemos ajudar?</p>
+      <a class="wa-btn" id="wa-link"
+         href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar."
+         target="_blank" rel="noopener" data-od-id="cta-whatsapp">
+        <svg viewBox="0 0 32 32"><path d="M16.04 4C9.43 4 4.05 9.38 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.19-1.62a11.94 11.94 0 0 0 5.85 1.51h.01c6.61 0 11.99-5.38 11.99-11.99C28.03 9.38 22.65 4 16.04 4zm0 21.9h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.67.96.98-3.58-.24-.37a9.9 9.9 0 0 1-1.52-5.32c0-5.5 4.48-9.98 9.98-9.98 5.49 0 9.98 4.48 9.98 9.98 0 5.5-4.49 9.9-9.09 9.9zm5.47-7.48c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+        Solicitar orçamento
+      </a>
+    </div>
+  </div>
+  <button class="wa-fab" id="wa-fab" aria-label="Abrir conversa no WhatsApp" aria-expanded="false" aria-controls="wa-card">
+    <svg viewBox="0 0 32 32"><path d="M16.04 4C9.43 4 4.05 9.38 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.19-1.62a11.94 11.94 0 0 0 5.85 1.51h.01c6.61 0 11.99-5.38 11.99-11.99C28.03 9.38 22.65 4 16.04 4zm0 21.9h-.01a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.67.96.98-3.58-.24-.37a9.9 9.9 0 0 1-1.52-5.32c0-5.5 4.48-9.98 9.98-9.98 5.49 0 9.98 4.48 9.98 9.98 0 5.5-4.49 9.9-9.09 9.9zm5.47-7.48c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+  </button>
+</div>
+
+<div class="mb-bar" data-od-id="mobile-cta-bar">
+  <a class="btn btn-p" href="https://wa.me/5512992427537?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20energia%20solar." target="_blank" rel="noopener" data-od-id="cta-mobile-bar">Solicitar orçamento</a>
+</div>
+
+<script>
+(function(){
+  var header=document.querySelector('.hdr');
+  var pgBar=document.querySelector('.pg i');
+  var lastY=0;
+  function onScroll(){
+    var y=window.scrollY;
+    header.classList.toggle('sc',y>10);
+    var doc=document.documentElement;
+    var max=doc.scrollHeight-window.innerHeight;
+    if(pgBar){pgBar.style.width=(max>0?(y/max*100):0)+'%';}
+    lastY=y;
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  var revObs=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
+  },{threshold:.12}):null;
+  document.querySelectorAll('.reveal').forEach(function(el){if(revObs){revObs.observe(el);}else{el.classList.add('visible');}});
+
+  function animateCount(el){
+    var end=parseFloat(el.getAttribute('data-count'));
+    var pre=el.getAttribute('data-prefix')||'';
+    var suf=el.getAttribute('data-suffix')||'';
+    var dur=1300,t0=null;
+    function frame(t){
+      if(!t0)t0=t;
+      var p=Math.min((t-t0)/dur,1);
+      var ease=1-Math.pow(1-p,3);
+      el.textContent=pre+Math.round(end*ease).toLocaleString('pt-BR')+suf;
+      if(p<1)requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var cntObs=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){animateCount(e.target);cntObs.unobserve(e.target);}});
+  },{threshold:.4}):null;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    if(cntObs){cntObs.observe(el);}else{el.textContent=(el.getAttribute('data-prefix')||'')+el.getAttribute('data-count')+(el.getAttribute('data-suffix')||'');}
+  });
+
+  var tg=document.querySelector('.hm-tg');
+  var mn=document.getElementById('mb-mn');
+  tg.addEventListener('click',function(){
+    var open=tg.classList.toggle('ac');
+    mn.classList.toggle('ac',open);
+    tg.setAttribute('aria-expanded',open?'true':'false');
+  });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){tg.classList.remove('ac');mn.classList.remove('ac');tg.setAttribute('aria-expanded','false');});
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var it=btn.closest('.faq-it');
+      var a=it.querySelector('.faq-a');
+      var open=it.classList.toggle('op');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      a.style.maxHeight=open?a.scrollHeight+'px':'0';
+    });
+  });
+
+  var tar=document.querySelector('#calc-consumo');
+  var per=document.querySelector('#calc-perfil');
+  var calcBtn=document.querySelector('#calc-btn');
+  var rs=document.getElementById('calc-rs');
+  function fmt(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0});}
+  function calc(){
+    var c=parseFloat(tar.value);
+    if(!c||c<50){rs.classList.remove('ac');return;}
+    var f=per.value==='industrial'?0.72:per.value==='comercial'?0.78:0.95;
+    var pot=c*0.14;
+    var eco=c*f;
+    var inv=pot*4800;
+    rs.classList.add('ac');
+    document.getElementById('calc-pot').textContent=pot.toFixed(1)+' kWp';
+    document.getElementById('calc-economia').textContent='R$ '+fmt(eco)+'/mês';
+    document.getElementById('calc-anual').textContent='R$ '+fmt(eco*12)+'/ano';
+    document.getElementById('calc-invest').textContent='R$ '+fmt(inv);
+    document.getElementById('calc-retorno').textContent='~'+Math.max(5,Math.round(inv/(eco*12)))+' anos';
+  }
+  calcBtn.addEventListener('click',calc);
+  tar.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();calc();}});
+
+  var waFab=document.getElementById('wa-fab');
+  var waCard=document.getElementById('wa-card');
+  var waClose=document.getElementById('wa-close');
+  var waOpen=false;
+  function setWa(open){
+    waOpen=open;
+    waCard.classList.toggle('ac',open);
+    waFab.setAttribute('aria-expanded',open?'true':'false');
+  }
+  if(waFab&&waCard){
+    waFab.addEventListener('click',function(e){e.stopPropagation();setWa(!waOpen);});
+    waClose.addEventListener('click',function(e){e.stopPropagation();setWa(false);});
+    document.addEventListener('click',function(e){if(!e.target.closest('.wa-wrap'))setWa(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setWa(false);});
+    setTimeout(function(){setWa(true);},2600);
+  }
+})();
+</script>
+
+
+</body></html>

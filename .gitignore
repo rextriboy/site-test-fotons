@@ -1,0 +1,7 @@
+# Open Design internal tracking & assets
+.file-versions/
+plugin-source/
+.od-skills/
+assets/
+*.artifact.json
+*.png
