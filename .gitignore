@@ -5,3 +5,11 @@ plugin-source/
 assets/
 *.artifact.json
 *.png
+
+# Secrets & local config
+opencode.json
+
+# Unused / duplicate local media
+Engineers_discussing_solar_panel._*.mp4
+USINA FOTO.jpg
+c2852fc68252ade71e481c09f98e86cd.jpg
