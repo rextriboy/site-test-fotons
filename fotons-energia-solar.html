@@ -155,6 +155,9 @@ img{max-width:100%;display:block}
 .reveal{opacity:1;transform:none;transition:none}
 .pg i,.btn-p::after,.btn-a::after,.cov-pulse{display:none}
 .pub-cd .pub-bg{transform:none;transition:none}
+.tea-ph{transform:none;transition:none}
+.fl-chart .ln{stroke-dashoffset:0;transition:none}
+.fl-chart .ar{opacity:1;transition:none}
 *{scroll-behavior:auto!important}
 }
 
@@ -252,7 +255,9 @@ img{max-width:100%;display:block}
 
 /* Solution */
 .sol-sec{background:#fff}
-.sol-fw{display:grid;gap:18px;margin-top:40px}
+.sol-fw{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.sol-fw>*:first-child{grid-column:1}.sol-fw>*:nth-child(2){grid-column:2}
+.sol-fw>*:nth-child(3){grid-column:1/-1}
 .fl-it{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:28px;background:var(--of);border-radius:14px;transition:all .3s}
 .fl-it:hover{transform:translateX(6px);box-shadow:0 6px 24px rgba(0,0,0,.06)}
 .fl-nm{width:44px;height:44px;background:var(--az);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;font-weight:700}
@@ -260,6 +265,28 @@ img{max-width:100%;display:block}
 .fl-ls{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
 .fl-ls li{display:flex;align-items:center;gap:5px;font-size:.85rem;color:var(--muted)}
 .fl-ls li::before{content:'';width:5px;height:5px;background:var(--la-dk);border-radius:50%}
+.fl-chart{margin-top:18px;background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px 18px;box-shadow:0 6px 24px rgba(10,22,40,.05)}
+.fl-chart-hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
+.fl-chart-hd h3{font-size:1.05rem;margin:0}
+.fl-chart-note{font-size:.75rem;color:var(--muted);margin:0 0 12px;max-width:56ch}
+.fl-lg{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.fl-lg span{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--tx);font-weight:500}
+.fl-lg i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.fl-lg .lg-a{background:var(--la)}
+.fl-lg .lg-d{background:var(--az)}
+.fl-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.fl-chart .ax-lb{font-size:.7rem;fill:var(--muted);font-weight:500}
+.fl-chart .ax-tk{stroke:var(--bd)}
+.fl-chart .g-tx{fill:var(--az-dk);font-size:.78rem;font-weight:700}
+.fl-chart .eco{fill:var(--az-sec);font-size:.78rem;font-weight:700}
+.fl-chart .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;pathLength:1;stroke-dasharray:1;stroke-dashoffset:1}
+.fl-chart .ln-a{stroke:var(--la)}
+.fl-chart .ln-d{stroke:var(--az)}
+.fl-chart .ar{opacity:0;transition:opacity .9s ease .4s}
+.fl-chart.drawn .ar{opacity:1}
+.fl-chart.drawn .ln{transition:stroke-dashoffset 1.3s ease .25s;stroke-dashoffset:0}
+.fl-chart .inst{stroke:var(--la);stroke-dasharray:5 5;stroke-width:1.5}
+.fl-chart .inst-lb{font-size:.72rem;fill:var(--la-tx);font-weight:600}
 
 /* About */
 .abt-g{display:grid;grid-template-columns:1fr;gap:40px}
@@ -303,7 +330,8 @@ img{max-width:100%;display:block}
 .tea-sec{background:var(--of)}
 .tea-g{display:grid;gap:28px}
 .tea-cd{background:#fff;border-radius:16px;overflow:hidden}
-.tea-ph{aspect-ratio:16/9;background:linear-gradient(135deg,#3a3a3a,#1a1a1a)}
+.tea-ph{aspect-ratio:16/9;background:linear-gradient(135deg,#3a3a3a,#1a1a1a);transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+.tea-cd:hover .tea-ph{transform:scale(1.1)}
 .tea-in{padding:28px}
 .tea-nm{font-family:var(--fd);font-size:1.35rem;font-weight:700;margin-bottom:2px}
 .tea-rl{font-size:.85rem;font-weight:600;color:var(--la-tx);margin-bottom:12px}
@@ -442,6 +470,8 @@ img{max-width:100%;display:block}
 .pbm-vis{padding:24px}
 .dt-v{font-size:1.8rem}
 .fl-it{grid-template-columns:1fr;gap:14px}
+.sol-fw{grid-template-columns:1fr}
+.sol-fw>*:first-child,.sol-fw>*:nth-child(2),.sol-fw>*:nth-child(3){grid-column:1}
 .abt-pl{gap:10px}
 .pl-c{padding:16px 10px}
 .pl-nm{font-size:1.5rem}
@@ -465,6 +495,7 @@ body{padding-bottom:76px}
 .mis-row{grid-template-columns:1fr}.val-g{grid-template-columns:repeat(2,1fr)}.mis-hero{padding:32px 24px}.mis-qt{right:20px;font-size:4rem}
 .usn-hr{grid-template-columns:1fr;gap:28px}
 .usn-img{max-width:100%}
+.sol-fw{grid-template-columns:1fr}.sol-fw>*:first-child,.sol-fw>*:nth-child(2),.sol-fw>*:nth-child(3){grid-column:1}
 .wa-wrap{right:14px;bottom:calc(88px + env(safe-area-inset-bottom))}
 .wa-fab{width:56px;height:56px}
 .wa-card{width:290px}
@@ -639,11 +670,62 @@ body{padding-bottom:76px}
           <h3>Depois</h3>
           <ul class="fl-ls">
             <li>Geração própria</li>
-            <li>Maior previsibilidade</li>
             <li>Economia real</li>
             <li>Independência energética</li>
           </ul>
         </div>
+      </div>
+      <div class="fl-chart reveal" data-od-id="grafico-antes-depois">
+        <div class="fl-chart-hd">
+          <h3>Custo acumulado em 5 anos</h3>
+          <div class="fl-lg" aria-hidden="true">
+            <span><i class="lg-a"></i>Antes · energia tradicional</span>
+            <span><i class="lg-d"></i>Depois · energia solar</span>
+          </div>
+        </div>
+        <p class="fl-chart-note">Simulação ilustrativa do custo acumulado de energia em 5 anos, antes e depois da instalação solar.</p>
+        <svg viewBox="0 0 720 300" role="img" aria-label="Gráfico comparativo: custo da energia tradicional crescente versus custo da energia solar estável após a instalação, ao longo de 5 anos">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FF6B2C" stop-opacity=".3"/>
+              <stop offset="1" stop-color="#FF6B2C" stop-opacity=".02"/>
+            </linearGradient>
+            <linearGradient id="gD" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#00A8CC" stop-opacity=".3"/>
+              <stop offset="1" stop-color="#00A8CC" stop-opacity=".02"/>
+            </linearGradient>
+          </defs>
+          <g class="ax-tk" stroke-width="1">
+            <line x1="40" y1="20" x2="680" y2="20"/>
+            <line x1="40" y1="78" x2="680" y2="78"/>
+            <line x1="40" y1="136" x2="680" y2="136"/>
+            <line x1="40" y1="194" x2="680" y2="194"/>
+            <line x1="40" y1="250" x2="680" y2="250"/>
+          </g>
+          <g class="ax-lb" text-anchor="end">
+            <text x="34" y="24">R$ 120 mil</text>
+            <text x="34" y="82">R$ 90 mil</text>
+            <text x="34" y="140">R$ 60 mil</text>
+            <text x="34" y="198">R$ 30 mil</text>
+            <text x="34" y="254">R$ 0</text>
+          </g>
+          <g class="ax-lb" text-anchor="middle">
+            <text x="40" y="274">Ano 1</text>
+            <text x="200" y="274">Ano 2</text>
+            <text x="360" y="274">Ano 3</text>
+            <text x="520" y="274">Ano 4</text>
+            <text x="680" y="274">Ano 5</text>
+          </g>
+          <line x1="200" y1="20" x2="200" y2="250" class="inst"/>
+          <text x="206" y="34" class="inst-lb">Instalação solar</text>
+          <path class="ar" d="M40,250 L40,212 L200,170 L360,124 L520,74 L680,20 L680,250 Z" fill="url(#gA)"/>
+          <path class="ar" d="M40,250 L40,145 L200,129 L360,120 L520,112 L680,106 L680,250 Z" fill="url(#gD)"/>
+          <path class="ln ln-a" d="M40,212 L200,170 L360,124 L520,74 L680,20"/>
+          <path class="ln ln-d" d="M40,145 L200,129 L360,120 L520,112 L680,106"/>
+          <circle cx="680" cy="20" r="5" fill="var(--la-dk)"/>
+          <circle cx="680" cy="106" r="5" class="g-tx"/>
+          <text x="596" y="90" text-anchor="middle" class="eco">Economia potencial ≈ R$ 45 mil</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -720,7 +802,7 @@ body{padding-bottom:76px}
         </div>
       </div>
       <div class="tea-cd" data-od-id="team-julio">
-        <div class="tea-ph"></div>
+        <div class="tea-ph" style="background:url('./DAVI.webp') center 32%/cover no-repeat"></div>
         <div class="tea-in">
           <div class="tea-nm">Rêmulo David Dias</div>
           <div class="tea-rl">COO</div>
@@ -1209,6 +1291,12 @@ body{padding-bottom:76px}
     if(cntObs){cntObs.observe(el);}else{el.textContent=(el.getAttribute('data-prefix')||'')+el.getAttribute('data-count')+(el.getAttribute('data-suffix')||'');}
   });
 
+  var chObs=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('drawn');chObs.unobserve(e.target);}});
+  },{threshold:.35}):null;
+  var chart=document.querySelector('.fl-chart');
+  if(chart){if(chObs){chObs.observe(chart);}else{chart.classList.add('drawn');}}
+
   var tg=document.querySelector('.hm-tg');
   var mn=document.getElementById('mb-mn');
   tg.addEventListener('click',function(){
@@ -1266,7 +1354,16 @@ body{padding-bottom:76px}
     waClose.addEventListener('click',function(e){e.stopPropagation();setWa(false);});
     document.addEventListener('click',function(e){if(!e.target.closest('.wa-wrap'))setWa(false);});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')setWa(false);});
-    setTimeout(function(){setWa(true);},2600);
+    var waOpened=false;
+    function openWaOnScroll(){
+      if(waOpened)return;
+      if(window.scrollY>180){
+        waOpened=true;
+        setWa(true);
+        window.removeEventListener('scroll',openWaOnScroll);
+      }
+    }
+    window.addEventListener('scroll',openWaOnScroll,{passive:true});
   }
 })();
 </script>
